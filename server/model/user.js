@@ -12,6 +12,12 @@ const userSchema=new mongoose.Schema({
         type:String,
         required:true
     },
+    role:{
+        type:String,
+        enum:['admin','user'],
+        default:"user"
+    },
+    token:String,
     favorites:[
         {
             type:mongoose.Types.ObjectId,
@@ -25,6 +31,6 @@ const userSchema=new mongoose.Schema({
         }
     ]
 
-})
+},{timestamps:true})
 
 module.exports=mongoose.model('User',userSchema)
